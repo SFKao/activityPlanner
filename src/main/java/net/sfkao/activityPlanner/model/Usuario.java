@@ -6,20 +6,18 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.domain.Range;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.OffsetTime;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 
 @Setter
 @Getter
-@Document("usuario")
-@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString
+@Document("usuario")
 public class Usuario {
 
     @Id
@@ -41,11 +39,11 @@ public class Usuario {
     private Integer priority = 0;
 
     @NonNull
-    private List<Disponibilidad> horasDisponibles;
+    private List<Disponibilidad> horasDisponibles = new ArrayList<>();
 
     @NonNull
     @DBRef(lazy = true)
-    List<Actividad> actividadesInscritas;
+    List<Actividad> actividadesInscritas = new ArrayList<>();
 
 
 }

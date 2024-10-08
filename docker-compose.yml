@@ -18,6 +18,8 @@ services:
         condition: service_healthy
     networks:
       - activityNetwork
+    volumes:
+      - ./data/certs/ca:/certs
 
   mongo:
     image: mongo

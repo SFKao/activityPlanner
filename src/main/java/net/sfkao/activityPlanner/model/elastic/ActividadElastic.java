@@ -1,28 +1,19 @@
-package net.sfkao.activityPlanner.model;
-
+package net.sfkao.activityPlanner.model.elastic;
 
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NonNull;
-import lombok.Setter;
-import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.domain.Range;
+import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.elasticsearch.annotations.WriteOnlyProperty;
 
-import java.util.List;
 import java.util.Optional;
 
+@Document(indexName = "document", createIndex = true)
+public class ActividadElastic {
 
-@Setter
-@Getter
-@ToString
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Document("actividad")
-public class Actividad {
 
     @NonNull
     @Id
@@ -42,12 +33,6 @@ public class Actividad {
     @NonNull
     private Boolean requierenTodos = false;
 
-    private String imageURL;
-
-    @NonNull
-    @DBRef(lazy = true)
-    List<Usuario> usuariosInscritos;
-
     public int getMinJugadores() {
         Optional<Integer> value = jugadores.getLowerBound().getValue();
         return value.orElse(1);
@@ -56,6 +41,18 @@ public class Actividad {
     public int getMaxJugadores() {
         Optional<Integer> value = jugadores.getUpperBound().getValue();
         return value.orElse(-1);
+    }
+
+    @WriteOnlyProperty
+    public String getMaxJugadoresString() {
+        int maxJugadores = getMaxJugadores();
+        return (maxJugadores == -1 ? "infinitos" : maxJugadores) + (maxJugadores == 1 ? "jugador" : "jugadores");
+    }
+
+    @WriteOnlyProperty
+    public String getMinJugadoresString() {
+        int minJugadores = getMinJugadores();
+        return minJugadores + (minJugadores == 1 ? "jugador" : "jugadores");
     }
 
 }

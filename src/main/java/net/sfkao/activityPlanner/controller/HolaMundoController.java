@@ -1,8 +1,16 @@
 package net.sfkao.activityPlanner.controller;
 
+import net.sfkao.activityPlanner.model.Usuario;
+import net.sfkao.activityPlanner.repository.mongodb.ActividadRepository;
+import net.sfkao.activityPlanner.repository.mongodb.DisponibilidadRepository;
+import net.sfkao.activityPlanner.repository.mongodb.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
@@ -13,6 +21,10 @@ import java.util.Optional;
 
 @RestController
 public class HolaMundoController {
+
+    @Autowired
+    UsuarioRepository usuarioRepository;
+
 
     @GetMapping("/holaMundo")
     public String holaMundo() {
@@ -31,6 +43,18 @@ public class HolaMundoController {
         response.put("saludo", "saludos");
         response.put("despedida", "adiosito");
         return ResponseEntity.of(Optional.of(response));
+    }
+
+    @PostMapping("/usuario")
+    public ResponseEntity<?> saveUsuario(@RequestBody @NonNull Usuario usuario) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findByEmail(usuario.getEmail());
+
+        if (usuarioOptional.isPresent())
+            return ResponseEntity.status(302).body("Ya existe un usuario con ese email");
+
+        Usuario saved = usuarioRepository.save(usuario);
+        return ResponseEntity.ok(saved);
+
     }
 
 }
