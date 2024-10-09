@@ -1,6 +1,8 @@
 package net.sfkao.activityPlanner.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,6 +15,8 @@ import java.time.OffsetTime;
 @Setter
 @Getter
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Document("disponibilidad")
 public class Disponibilidad {
 

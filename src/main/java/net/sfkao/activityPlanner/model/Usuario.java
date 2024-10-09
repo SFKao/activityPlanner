@@ -1,7 +1,9 @@
 package net.sfkao.activityPlanner.model;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
@@ -17,6 +19,8 @@ import java.util.List;
 @Getter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Document("usuario")
 public class Usuario {
 
@@ -37,6 +41,13 @@ public class Usuario {
 
     @NonNull
     private Integer priority = 0;
+
+    public Usuario(@NonNull String email, @NonNull String hashedPass, @NonNull String username, @NonNull Integer priority) {
+        this.email = email;
+        this.hashedPass = hashedPass;
+        this.username = username;
+        this.priority = priority;
+    }
 
     @NonNull
     private List<Disponibilidad> horasDisponibles = new ArrayList<>();

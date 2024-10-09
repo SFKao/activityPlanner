@@ -1,6 +1,7 @@
 package net.sfkao.activityPlanner.configuration;
 
 import lombok.NonNull;
+import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +17,7 @@ import java.security.KeyStore;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
 
-@Slf4j
+@Log4j2
 @Configuration
 public class ElasticsearchConfig extends ElasticsearchConfiguration {
 

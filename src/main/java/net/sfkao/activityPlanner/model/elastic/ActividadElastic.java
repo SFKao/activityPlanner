@@ -1,7 +1,9 @@
 package net.sfkao.activityPlanner.model.elastic;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.domain.Range;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -11,6 +13,8 @@ import org.springframework.data.elasticsearch.annotations.WriteOnlyProperty;
 
 import java.util.Optional;
 
+@Getter
+@Setter
 @Document(indexName = "document", createIndex = true)
 public class ActividadElastic {
 

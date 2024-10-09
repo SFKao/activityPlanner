@@ -11,6 +11,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
@@ -20,13 +21,14 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/")
 public class HolaMundoController {
 
     @Autowired
     UsuarioRepository usuarioRepository;
 
 
-    @GetMapping("/holaMundo")
+    @GetMapping(value= "/holaMundo")
     public String holaMundo() {
         return "Saludaciones";
     }
@@ -45,7 +47,7 @@ public class HolaMundoController {
         return ResponseEntity.of(Optional.of(response));
     }
 
-    @PostMapping("/usuario")
+    @PostMapping(value= "/usuario")
     public ResponseEntity<?> saveUsuario(@RequestBody @NonNull Usuario usuario) {
         Optional<Usuario> usuarioOptional = usuarioRepository.findByEmail(usuario.getEmail());
 
@@ -56,5 +58,6 @@ public class HolaMundoController {
         return ResponseEntity.ok(saved);
 
     }
+
 
 }

@@ -1,8 +1,10 @@
 package net.sfkao.activityPlanner.model;
 
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,6 +15,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,10 +24,11 @@ import java.util.Optional;
 @Getter
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@NoArgsConstructor
+@AllArgsConstructor
 @Document("actividad")
 public class Actividad {
 
-    @NonNull
     @Id
     @EqualsAndHashCode.Include
     private String id;
@@ -36,8 +40,9 @@ public class Actividad {
     @Field(type = FieldType.Text)
     private String descripcion;
 
-    @Field(type = FieldType.Integer_Range)
-    private Range<Integer> jugadores;
+    private int minJugadores;
+
+    private int maxJugadores;
 
     @NonNull
     private Boolean requierenTodos = false;
@@ -46,16 +51,24 @@ public class Actividad {
 
     @NonNull
     @DBRef(lazy = true)
-    List<Usuario> usuariosInscritos;
+    List<Usuario> usuariosInscritos = new ArrayList<>();
 
-    public int getMinJugadores() {
-        Optional<Integer> value = jugadores.getLowerBound().getValue();
-        return value.orElse(1);
+
+    public Actividad(@NonNull String nombre, String descripcion, int minJugadores, int maxJugadores, @NonNull Boolean requierenTodos, String imageURL) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.minJugadores = minJugadores;
+        this.maxJugadores = maxJugadores;
+        this.requierenTodos = requierenTodos;
+        this.imageURL = imageURL;
     }
 
-    public int getMaxJugadores() {
-        Optional<Integer> value = jugadores.getUpperBound().getValue();
-        return value.orElse(-1);
+    public Range<Integer> getRange(){
+        return Range.of(Range.Bound.inclusive(minJugadores), Range.Bound.inclusive(maxJugadores));
     }
 
+    public void setRange(Range<Integer> range){
+        this.minJugadores = range.getLowerBound().getValue().orElse(1);
+        this.maxJugadores = range.getUpperBound().getValue().orElse(-1);
+    }
 }
