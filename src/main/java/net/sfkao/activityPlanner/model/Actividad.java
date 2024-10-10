@@ -17,7 +17,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 @Setter
@@ -63,11 +62,11 @@ public class Actividad {
         this.imageURL = imageURL;
     }
 
-    public Range<Integer> getRange(){
+    public Range<Integer> getJugadores(){
         return Range.of(Range.Bound.inclusive(minJugadores), Range.Bound.inclusive(maxJugadores));
     }
 
-    public void setRange(Range<Integer> range){
+    public void setJugadores(Range<Integer> range){
         this.minJugadores = range.getLowerBound().getValue().orElse(1);
         this.maxJugadores = range.getUpperBound().getValue().orElse(-1);
     }

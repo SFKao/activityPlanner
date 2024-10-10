@@ -55,8 +55,6 @@ public class ActividadServiceImpl implements ActividadService {
         Query query = new StringQuery(queryString);
         SearchHits<ActividadElastic> hits = elasticsearchOperations.search(query, ActividadElastic.class);
         return hits.get().map(hit -> actividadMapper.fromElastic(hit.getContent())).collect(Collectors.toList());
-
-
     }
 
     @Override
