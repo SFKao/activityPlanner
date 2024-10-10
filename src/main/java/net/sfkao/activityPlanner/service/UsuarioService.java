@@ -15,6 +15,6 @@ public interface UsuarioService {
 
     Optional<LoginDTO> login(LoginTryDTO usuarioDTO);
 
-
+    void reindex();
 
 }

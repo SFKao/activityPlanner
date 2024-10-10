@@ -63,4 +63,9 @@ public class UsuarioServiceImpl implements UsuarioService {
         return Optional.of(loginDTO);
 
     }
+
+    @Override
+    public void reindex() {
+
+    }
 }

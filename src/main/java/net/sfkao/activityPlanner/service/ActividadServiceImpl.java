@@ -47,7 +47,8 @@ public class ActividadServiceImpl implements ActividadService {
                                 "descripcion^3",
                                 "jugadores^4"
                             ],
-                            "query": "%s"
+                            "query": "%s",
+                            "type":"phrase_prefix"
                         }
                     }
                 
@@ -73,5 +74,11 @@ public class ActividadServiceImpl implements ActividadService {
     public void deleteById(String id) {
         actividadRepository.deleteById(id);
         actividadElasticRepository.deleteById(id);
+    }
+
+    @Override
+    public void reindex() {
+        actividadElasticRepository.deleteAll();
+        actividadRepository.findAll().forEach(actividad -> actividadElasticRepository.save(actividadMapper.toElastic(actividad)));
     }
 }

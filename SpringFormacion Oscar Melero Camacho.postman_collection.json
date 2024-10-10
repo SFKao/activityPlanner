@@ -53,6 +53,9 @@
 		{
 			"name": "Login",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -130,12 +133,90 @@
 			"response": []
 		},
 		{
+			"name": "Save activity",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Satisfactory\",\r\n    \"descripcion\": \"Jugar al Satisfactory y construir fabricas complejas\",\r\n    \"minJugadores\": 1,\r\n    \"maxJugadores\": 8,\r\n    \"imageURL\" : \"https://cdn2.unrealengine.com/how-coffee-stain-studios-is-building-satisfactory-s-long-awaited-1-0-update-1778x1000-f44b48bbd757.jpeg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/activity",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"activity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update activity",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"6707b180fc91767552cb2e33\",\r\n    \"nombre\": \"Core keeper\",\r\n    \"descripcion\": \"Jugar al Core Keeper y matar bichardos\",\r\n    \"minJugadores\": 1,\r\n    \"maxJugadores\": 8,\r\n    \"requierenTodos\": true,\r\n    \"imageURL\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/activity",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"activity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete activity",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/activity?id=670693f6bebade0bead660b9",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"activity"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "670693f6bebade0bead660b9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Search activities",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/api/activity/search?search=zombies",
+					"raw": "{{url}}/api/activity/search?search=fabricas",
 					"host": [
 						"{{url}}"
 					],
@@ -147,7 +228,7 @@
 					"query": [
 						{
 							"key": "search",
-							"value": "zombies"
+							"value": "fabricas"
 						}
 					]
 				}
@@ -172,6 +253,25 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Reindex",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/elastic/reindex",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"elastic",
+						"reindex"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
@@ -179,7 +279,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiaWF0IjoxNzI4NTUxMDI5LCJleHAiOjE3Mjg1NTQ2Mjl9.g-qrw4kJwOYKwtoZYiSjoNOp3W8RNfp0Iki6z9Tr4L8",
+				"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiaWF0IjoxNzI4NTU3NTM0LCJleHAiOjE3NjQ1NTc1MzR9.qPvlzaXjrjeGzNUzCEVHwYXppO_vwwkX64x63jGIg-M",
 				"type": "string"
 			}
 		]

@@ -17,6 +17,6 @@ public interface ActividadService {
 
     void deleteById(String id);
 
-
+    void reindex();
 
 }

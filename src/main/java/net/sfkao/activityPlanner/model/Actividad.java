@@ -63,7 +63,7 @@ public class Actividad {
     }
 
     public Range<Integer> getJugadores(){
-        return Range.of(Range.Bound.inclusive(minJugadores), Range.Bound.inclusive(maxJugadores));
+        return Range.of(Range.Bound.inclusive(minJugadores), maxJugadores!=-1 ? Range.Bound.inclusive(maxJugadores) : Range.Bound.unbounded());
     }
 
     public void setJugadores(Range<Integer> range){
