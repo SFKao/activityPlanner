@@ -9,6 +9,8 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
+import java.time.Instant;
+
 @Accessors(chain = true)
 @Getter
 @Setter
@@ -19,4 +21,6 @@ import lombok.experimental.Accessors;
 public class LoginDTO {
     private String token;
     private long expiresIn;
+    private String refreshToken;
+    private long refreshTokenExpiresIn;
 }

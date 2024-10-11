@@ -1,5 +1,6 @@
 package net.sfkao.activityPlanner.repository.mongodb;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import net.sfkao.activityPlanner.model.Usuario;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
@@ -15,5 +16,8 @@ public interface UsuarioRepository extends MongoRepository<Usuario, String> {
 
     @Query("{'$or':[ {'email':?0}, {'username':?1} ] }")
     Optional<Usuario> findByUsernameOrEmail(String email, String username);
+
+    Optional<Usuario> findByRefreshToken(@NonNull String refreshToken);
+
 
 }

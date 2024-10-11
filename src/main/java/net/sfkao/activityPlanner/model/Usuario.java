@@ -10,10 +10,10 @@ import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -58,6 +58,9 @@ public class Usuario implements UserDetails {
     @NonNull
     @DBRef(lazy = true)
     List<Actividad> actividadesInscritas = new ArrayList<>();
+
+    private String refreshToken;
+    private Instant refreshTokenExpiration;
 
 
     @Override

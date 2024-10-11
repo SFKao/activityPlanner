@@ -1,5 +1,6 @@
 package net.sfkao.activityPlanner.service;
 
+import lombok.extern.log4j.Log4j2;
 import net.sfkao.activityPlanner.mapper.ActividadMapper;
 import net.sfkao.activityPlanner.model.Actividad;
 import net.sfkao.activityPlanner.model.elastic.ActividadElastic;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Log4j2
 @Service
 public class ActividadServiceImpl implements ActividadService {
 

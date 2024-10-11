@@ -1,6 +1,7 @@
 package net.sfkao.activityPlanner.controller;
 
 
+import io.jsonwebtoken.ExpiredJwtException;
 import net.sfkao.activityPlanner.mapper.ModelMapperSingleton;
 import net.sfkao.activityPlanner.model.Usuario;
 import net.sfkao.activityPlanner.model.dto.LoginDTO;
@@ -34,8 +35,20 @@ public class AuthenticationController {
     public ResponseEntity<?> login(@RequestBody LoginTryDTO loginTryDTO){
         Optional<LoginDTO> login = usuarioService.login(loginTryDTO);
         if(login.isEmpty())
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.notFound().build();
         return ResponseEntity.ok(login);
+    }
+
+    @PostMapping("/refreshToken")
+    public ResponseEntity<?> refresh(@RequestBody String refreshToken){
+        try {
+            Optional<LoginDTO> loginDTO = usuarioService.refreshToken(refreshToken);
+            if(loginDTO.isEmpty())
+                return ResponseEntity.notFound().build();
+            return ResponseEntity.ok(loginDTO);
+        }catch (ExpiredJwtException expiredJwtException){
+            return ResponseEntity.badRequest().body("El token ha expirado");
+        }
     }
 
 
