@@ -1,5 +1,6 @@
 package net.sfkao.activityPlanner.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -10,6 +11,7 @@ import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -56,7 +58,8 @@ public class Usuario implements UserDetails {
     private List<Disponibilidad> horasDisponibles = new ArrayList<>();
 
     @NonNull
-    @DBRef(lazy = true)
+    @DocumentReference(lazy = true)
+    @JsonManagedReference
     List<Actividad> actividadesInscritas = new ArrayList<>();
 
     private String refreshToken;

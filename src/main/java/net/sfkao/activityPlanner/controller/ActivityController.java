@@ -1,6 +1,8 @@
 package net.sfkao.activityPlanner.controller;
 
 import lombok.extern.log4j.Log4j2;
+import net.sfkao.activityPlanner.exception.ActividadNotFoundException;
+import net.sfkao.activityPlanner.exception.UsuarioNotFoundException;
 import net.sfkao.activityPlanner.model.Actividad;
 import net.sfkao.activityPlanner.service.ActividadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,14 +52,25 @@ public class ActivityController {
 
     @GetMapping("/search")
     public ResponseEntity<?> search(@RequestParam(name = "search") String search) {
-
         return ResponseEntity.ok(actividadService.search(search));
-
     }
 
     @DeleteMapping()
     public ResponseEntity<?> delete(@RequestParam(name = "id") String id){
         actividadService.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/inscribe")
+    public ResponseEntity<?> inscribe(@RequestParam(name = "id") String activityId, Principal user){
+        String username = user.getName();
+        try {
+            actividadService.inscribe(username, activityId);
+        } catch (ActividadNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        } catch (UsuarioNotFoundException e) {
+            return ResponseEntity.status(401).build();
+        }
         return ResponseEntity.ok().build();
     }
 

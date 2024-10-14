@@ -1,6 +1,9 @@
 package net.sfkao.activityPlanner.service;
 
+import net.sfkao.activityPlanner.exception.ActividadNotFoundException;
+import net.sfkao.activityPlanner.exception.UsuarioNotFoundException;
 import net.sfkao.activityPlanner.model.Actividad;
+import net.sfkao.activityPlanner.model.Usuario;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +19,8 @@ public interface ActividadService {
     Actividad save(Actividad actividad);
 
     void deleteById(String id);
+
+    void inscribe(String username, String actividadId) throws ActividadNotFoundException, UsuarioNotFoundException;
 
     void reindex();
 

@@ -1,6 +1,7 @@
 package net.sfkao.activityPlanner.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -9,11 +10,13 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.data.domain.Range;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +52,14 @@ public class Actividad {
     private String imageURL;
 
     @NonNull
-    @DBRef(lazy = true)
+    @DocumentReference(lazy = true, lookup = """
+                usuario.actividadesInscritas: {
+                    $in: [new ObjectId($#{#id})]
+                  }
+                }
+            """)
+    @ReadOnlyProperty
+    @JsonBackReference
     List<Usuario> usuariosInscritos = new ArrayList<>();
 
 

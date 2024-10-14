@@ -81,6 +81,36 @@
 			"response": []
 		},
 		{
+			"name": "Refresh",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiaWF0IjoxNzI4NjM3ODM3LCJleHAiOjE3Mjg3MjQyMzd9.MO6Aj3Jf7Uum_M_A_LBbHTmhT5Sx3onUMafYxqbPgY4",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/auth/refreshToken",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth",
+						"refreshToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "testElastic",
 			"request": {
 				"auth": {
@@ -139,7 +169,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Satisfactory\",\r\n    \"descripcion\": \"Jugar al Satisfactory y construir fabricas complejas\",\r\n    \"minJugadores\": 1,\r\n    \"maxJugadores\": 8,\r\n    \"imageURL\" : \"https://cdn2.unrealengine.com/how-coffee-stain-studios-is-building-satisfactory-s-long-awaited-1-0-update-1778x1000-f44b48bbd757.jpeg\"\r\n}",
+					"raw": "{\r\n    \"nombre\": \"Factorio: Space Age\",\r\n    \"descripcion\": \"Jugar al Factorio y construir fabricas complejas para ir al espacio\",\r\n    \"minJugadores\": 1,\r\n    \"maxJugadores\": -1,\r\n    \"imageURL\" : null\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -236,6 +266,31 @@
 			"response": []
 		},
 		{
+			"name": "Inscribe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/activity/inscribe?id=6707b38d0f2ecb7400393ef0",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"activity",
+						"inscribe"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "6707b38d0f2ecb7400393ef0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Put activites test",
 			"request": {
 				"method": "POST",
@@ -279,7 +334,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiaWF0IjoxNzI4NTU3NTM0LCJleHAiOjE3NjQ1NTc1MzR9.qPvlzaXjrjeGzNUzCEVHwYXppO_vwwkX64x63jGIg-M",
+				"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiaWF0IjoxNzI4NjQ0MTYyLCJleHAiOjE3NjQ2NDQxNjJ9.07S-oW77RGmhgtgJiIGimTQxqEecoXzz3k7qvbWkhds",
 				"type": "string"
 			}
 		]
