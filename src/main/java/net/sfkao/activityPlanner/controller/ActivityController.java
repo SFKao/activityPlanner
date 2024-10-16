@@ -28,21 +28,7 @@ public class ActivityController {
     @Autowired
     ActividadService actividadService;
 
-    @GetMapping()
-    public ResponseEntity<?> getAll() {
-        try {
-            return ResponseEntity.ok(actividadService.getAll());
-        } catch (Exception e) {
-            log.error("No se ha podido devolver todas las actividades", e);
-            return ResponseEntity.internalServerError().build();
-        }
-    }
 
-    @PostMapping()
-    public ResponseEntity<?> save(@RequestBody Actividad actividad){
-        actividad = actividadService.save(actividad);
-        return ResponseEntity.ok(actividad);
-    }
 
     @PutMapping()
     public ResponseEntity<?> update(@RequestBody Actividad actividad){
