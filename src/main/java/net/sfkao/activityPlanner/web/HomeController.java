@@ -1,4 +1,4 @@
-package net.sfkao.activityPlanner.controller;
+package net.sfkao.activityPlanner.web;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/")
 public class HomeController {
 
-    @GetMapping(value= "/")
+    @GetMapping(value = "/")
     public String home(Model model, HttpSession session) {
         model.addAttribute("mensaje", "Saludaciones desde java");
         List<String> list = Arrays.asList("Hola", "que", "tal");
