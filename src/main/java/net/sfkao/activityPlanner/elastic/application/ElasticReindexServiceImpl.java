@@ -10,7 +10,7 @@ import java.util.List;
 
 @Log4j2
 @Service
-public class ElasticServiceImpl implements ElasticService {
+public class ElasticReindexServiceImpl implements ElasticReindexService {
 
     @Autowired
     List<ReindexableEntityService> reindexableEntityServices;
