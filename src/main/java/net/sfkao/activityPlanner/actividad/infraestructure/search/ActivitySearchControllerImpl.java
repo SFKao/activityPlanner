@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Log4j2
 @RestController
-public class ActivitySearchControllerImpl {
+public class ActivitySearchControllerImpl implements ActivitySearchController {
 
     @Autowired
     ActividadSearchService actividadSearchService;
 
+    @Override
     public ResponseEntity<?> search(String search) {
         return ResponseEntity.ok(actividadSearchService.search(search));
     }

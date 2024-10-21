@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
-import net.sfkao.activityPlanner.usuario.domain.Usuario;
+import net.sfkao.activityPlanner.usuario.domain.model.Usuario;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.data.domain.Range;

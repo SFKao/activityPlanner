@@ -1,5 +1,6 @@
-package net.sfkao.activityPlanner.usuario.domain;
+package net.sfkao.activityPlanner.usuario.domain.repository;
 
+import net.sfkao.activityPlanner.usuario.domain.model.Usuario;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.lang.NonNull;

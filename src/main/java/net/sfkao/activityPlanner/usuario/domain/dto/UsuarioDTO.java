@@ -1,4 +1,4 @@
-package net.sfkao.activityPlanner.usuario.domain;
+package net.sfkao.activityPlanner.usuario.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

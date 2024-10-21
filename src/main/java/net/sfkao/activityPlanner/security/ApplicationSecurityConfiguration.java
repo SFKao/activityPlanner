@@ -1,6 +1,6 @@
 package net.sfkao.activityPlanner.security;
 
-import net.sfkao.activityPlanner.usuario.domain.UsuarioRepository;
+import net.sfkao.activityPlanner.usuario.domain.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

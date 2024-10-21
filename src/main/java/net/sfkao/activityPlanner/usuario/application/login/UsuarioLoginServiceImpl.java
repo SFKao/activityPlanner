@@ -2,10 +2,10 @@ package net.sfkao.activityPlanner.usuario.application.login;
 
 import net.sfkao.activityPlanner.security.JwtService;
 import net.sfkao.activityPlanner.usuario.application.generateRefreshToken.UsuarioGenerateRefreshTokenService;
-import net.sfkao.activityPlanner.usuario.domain.AuthDTO;
-import net.sfkao.activityPlanner.usuario.domain.LoginDTO;
-import net.sfkao.activityPlanner.usuario.domain.Usuario;
-import net.sfkao.activityPlanner.usuario.domain.UsuarioRepository;
+import net.sfkao.activityPlanner.usuario.domain.dto.AuthDTO;
+import net.sfkao.activityPlanner.usuario.domain.dto.LoginDTO;
+import net.sfkao.activityPlanner.usuario.domain.model.Usuario;
+import net.sfkao.activityPlanner.usuario.domain.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;

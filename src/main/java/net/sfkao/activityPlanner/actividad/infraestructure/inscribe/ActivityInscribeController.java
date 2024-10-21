@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.security.Principal;
 
 @RestController
-@RequestMapping("/api/activity")
+@RequestMapping("/api/activity/inscribe")
 public interface ActivityInscribeController {
 
-    @PostMapping("/inscribe")
+    @PostMapping
     ResponseEntity<?> inscribe(@RequestParam(name = "id") String activityId, Principal user);
 
 

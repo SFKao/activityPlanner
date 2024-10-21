@@ -1,10 +1,10 @@
 package net.sfkao.activityPlanner.usuario.application.signup;
 
-import net.sfkao.activityPlanner.usuario.domain.Usuario;
-import net.sfkao.activityPlanner.usuario.domain.UsuarioDTO;
-import net.sfkao.activityPlanner.usuario.domain.UsuarioElastic;
-import net.sfkao.activityPlanner.usuario.domain.UsuarioElasticRepository;
-import net.sfkao.activityPlanner.usuario.domain.UsuarioRepository;
+import net.sfkao.activityPlanner.usuario.domain.dto.UsuarioDTO;
+import net.sfkao.activityPlanner.usuario.domain.model.Usuario;
+import net.sfkao.activityPlanner.usuario.domain.model.UsuarioElastic;
+import net.sfkao.activityPlanner.usuario.domain.repository.UsuarioElasticRepository;
+import net.sfkao.activityPlanner.usuario.domain.repository.UsuarioRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

@@ -1,4 +1,4 @@
-package net.sfkao.activityPlanner.usuario.domain;
+package net.sfkao.activityPlanner.usuario.domain.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;

@@ -1,8 +1,8 @@
 package net.sfkao.activityPlanner.actividad.application.reindex;
 
 import net.sfkao.activityPlanner.actividad.domain.ActividadElastic;
-import net.sfkao.activityPlanner.actividad.domain.ActividadElasticRepository;
-import net.sfkao.activityPlanner.actividad.domain.ActividadRepository;
+import net.sfkao.activityPlanner.actividad.domain.repository.ActividadElasticRepository;
+import net.sfkao.activityPlanner.actividad.domain.repository.ActividadRepository;
 import net.sfkao.activityPlanner.elastic.domain.ReindexableEntityService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

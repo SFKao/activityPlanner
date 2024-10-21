@@ -1,7 +1,7 @@
 package net.sfkao.activityPlanner.actividad.application.getOne;
 
 import net.sfkao.activityPlanner.actividad.domain.Actividad;
-import net.sfkao.activityPlanner.actividad.domain.ActividadRepository;
+import net.sfkao.activityPlanner.actividad.domain.repository.ActividadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

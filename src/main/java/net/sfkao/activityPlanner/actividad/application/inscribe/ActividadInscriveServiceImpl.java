@@ -1,11 +1,11 @@
 package net.sfkao.activityPlanner.actividad.application.inscribe;
 
 import net.sfkao.activityPlanner.actividad.domain.Actividad;
-import net.sfkao.activityPlanner.actividad.domain.ActividadRepository;
+import net.sfkao.activityPlanner.actividad.domain.repository.ActividadRepository;
 import net.sfkao.activityPlanner.exception.ActividadNotFoundException;
 import net.sfkao.activityPlanner.exception.UsuarioNotFoundException;
-import net.sfkao.activityPlanner.usuario.domain.Usuario;
-import net.sfkao.activityPlanner.usuario.domain.UsuarioRepository;
+import net.sfkao.activityPlanner.usuario.domain.model.Usuario;
+import net.sfkao.activityPlanner.usuario.domain.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

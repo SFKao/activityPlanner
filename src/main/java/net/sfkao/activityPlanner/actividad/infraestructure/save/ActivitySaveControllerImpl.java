@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Log4j2
 @RestController
-public class ActivitySaveControllerImpl {
+public class ActivitySaveControllerImpl implements ActivitySaveController {
 
     @Autowired
     ActividadSaveService actividadService;
 
 
+    @Override
     public ResponseEntity<?> save(Actividad actividad) {
         actividad = actividadService.save(actividad);
         return ResponseEntity.ok(actividad);

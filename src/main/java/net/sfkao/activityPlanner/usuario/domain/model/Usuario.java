@@ -1,4 +1,4 @@
-package net.sfkao.activityPlanner.usuario.domain;
+package net.sfkao.activityPlanner.usuario.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
@@ -9,7 +9,6 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 import net.sfkao.activityPlanner.actividad.domain.Actividad;
-import net.sfkao.activityPlanner.disponibilidad.domain.Disponibilidad;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
@@ -48,12 +47,8 @@ public class Usuario implements UserDetails {
     @NonNull
     private Integer priority = 0;
 
-    public Usuario(@NonNull String email, @NonNull String hashedPass, @NonNull String username, @NonNull Integer priority) {
-        this.email = email;
-        this.hashedPass = hashedPass;
-        this.username = username;
-        this.priority = priority;
-    }
+    private String refreshToken;
+    private Instant refreshTokenExpiration;
 
     @NonNull
     private List<Disponibilidad> horasDisponibles = new ArrayList<>();
@@ -63,9 +58,12 @@ public class Usuario implements UserDetails {
     @JsonManagedReference
     List<Actividad> actividadesInscritas = new ArrayList<>();
 
-    private String refreshToken;
-    private Instant refreshTokenExpiration;
-
+    public Usuario(@NonNull String email, @NonNull String hashedPass, @NonNull String username, @NonNull Integer priority) {
+        this.email = email;
+        this.hashedPass = hashedPass;
+        this.username = username;
+        this.priority = priority;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/activity")
+@RequestMapping("/api/activity/search")
 public interface ActivitySearchController {
 
-    @GetMapping("/search")
+    @GetMapping()
     ResponseEntity<?> search(@RequestParam(name = "search") String search);
 
 }

@@ -1,7 +1,7 @@
 package net.sfkao.activityPlanner.actividad.application.delete;
 
-import net.sfkao.activityPlanner.actividad.domain.ActividadElasticRepository;
-import net.sfkao.activityPlanner.actividad.domain.ActividadRepository;
+import net.sfkao.activityPlanner.actividad.domain.repository.ActividadElasticRepository;
+import net.sfkao.activityPlanner.actividad.domain.repository.ActividadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

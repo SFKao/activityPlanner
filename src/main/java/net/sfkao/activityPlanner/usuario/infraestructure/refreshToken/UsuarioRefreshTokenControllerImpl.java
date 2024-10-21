@@ -3,7 +3,7 @@ package net.sfkao.activityPlanner.usuario.infraestructure.refreshToken;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import net.sfkao.activityPlanner.usuario.application.refreshToken.UsuarioRefreshTokenService;
-import net.sfkao.activityPlanner.usuario.domain.LoginDTO;
+import net.sfkao.activityPlanner.usuario.domain.dto.LoginDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-public class UsuarioRefreshTokenControllerImpl {
+public class UsuarioRefreshTokenControllerImpl implements UsuarioRefreshTokenController {
 
     @Autowired
     UsuarioRefreshTokenService usuarioRefreshTokenService;
 
+    @Override
     public ResponseEntity<?> refresh(String refreshToken) {
         try {
             Optional<LoginDTO> loginDTO = usuarioRefreshTokenService.refreshToken(refreshToken);

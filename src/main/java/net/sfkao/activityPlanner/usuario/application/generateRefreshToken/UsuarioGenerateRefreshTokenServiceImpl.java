@@ -1,8 +1,8 @@
 package net.sfkao.activityPlanner.usuario.application.generateRefreshToken;
 
 import net.sfkao.activityPlanner.security.JwtService;
-import net.sfkao.activityPlanner.usuario.domain.Usuario;
-import net.sfkao.activityPlanner.usuario.domain.UsuarioRepository;
+import net.sfkao.activityPlanner.usuario.domain.model.Usuario;
+import net.sfkao.activityPlanner.usuario.domain.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
