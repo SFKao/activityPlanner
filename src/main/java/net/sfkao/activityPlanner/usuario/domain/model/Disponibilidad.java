@@ -9,6 +9,7 @@ import org.springframework.cache.annotation.Cacheable;
 
 import java.time.DayOfWeek;
 import java.time.OffsetTime;
+import java.time.format.DateTimeFormatter;
 
 @Setter
 @Getter
@@ -31,6 +32,14 @@ public class Disponibilidad {
     @Cacheable
     public OffsetTime getHoraFinalAsTime() {
         return OffsetTime.parse(horaFinal);
+    }
+
+    public void setHoraInicioAsTime(OffsetTime time) {
+        horaInicio = time.format(DateTimeFormatter.ISO_OFFSET_TIME);
+    }
+
+    public void setHoraFinalAsTime(OffsetTime time) {
+        horaFinal = time.format(DateTimeFormatter.ISO_OFFSET_TIME);
     }
 
 }
