@@ -77,12 +77,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.modelmapper</groupId>
-            <artifactId>modelmapper</artifactId>
-            <version>3.2.0</version>
-        </dependency>
-
-        <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
             <version>0.11.5</version>
@@ -101,6 +95,17 @@
             <groupId>com.github.dpaukov</groupId>
             <artifactId>combinatoricslib3</artifactId>
             <version>3.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>1.6.2</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
