@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
-import net.sfkao.activityPlanner.domain.Usuario;
+import net.sfkao.activityPlanner.infraestructure.adapter.out.persistence.usuario.entity.UsuarioEntity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.data.elasticsearch.annotations.Field;
@@ -59,7 +59,7 @@ public class ActividadEntity {
             """)
     @ReadOnlyProperty
     @JsonBackReference
-    List<Usuario> usuariosInscritos = new ArrayList<>();
+    List<UsuarioEntity> usuariosInscritos = new ArrayList<>();
 
 
     public ActividadEntity(@NonNull String nombre, String descripcion, int minJugadores, int maxJugadores, @NonNull Boolean requierenTodos, String imageURL) {
