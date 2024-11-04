@@ -7,6 +7,8 @@ import net.sfkao.activityPlanner.infraestructure.adapter.out.elastic.usuario.map
 import net.sfkao.activityPlanner.infraestructure.adapter.out.elastic.usuario.repository.UsuarioElasticRepository;
 import net.sfkao.activityPlanner.infraestructure.adapter.out.persistence.usuario.mapper.UsuarioMapper;
 import net.sfkao.activityPlanner.infraestructure.adapter.out.persistence.usuario.repository.UsuarioRepository;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -23,26 +25,31 @@ public class UsuarioPersistencePortAdapter implements UsuarioPersistencePort {
     UsuarioElasticMapper usuarioElasticMapper = UsuarioElasticMapper.INSTANCE;
 
     @Override
+    @Cacheable("usuarios")
     public Optional<Usuario> findByEmail(String email) {
         return usuarioRepository.findByEmail(email).map(usuarioMapper::fromEntity);
     }
 
     @Override
+    @Cacheable("usuarios")
     public Optional<Usuario> findByUsername(String username) {
         return usuarioRepository.findByUsername(username).map(usuarioMapper::fromEntity);
     }
 
     @Override
+    @Cacheable("usuarios")
     public Optional<Usuario> findByUsernameOrEmail(String email, String username) {
         return usuarioRepository.findByEmailOrUsername(email, username).map(usuarioMapper::fromEntity);
     }
 
     @Override
+    @Cacheable("usuarios")
     public Optional<Usuario> findByRefreshToken(String refreshToken) {
         return usuarioRepository.findByRefreshToken(refreshToken).map(usuarioMapper::fromEntity);
     }
 
     @Override
+    @CachePut(value = "usuarios", key = "#usuario.id")
     public Usuario save(Usuario usuario) {
         Usuario response = usuarioMapper.fromEntity(usuarioRepository.save(usuarioMapper.toEntity(usuario)));
         usuarioElasticRepository.save(usuarioElasticMapper.toElasitc(usuario));

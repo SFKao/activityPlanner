@@ -3,6 +3,7 @@ package net.sfkao.activityPlanner.infraestructure.adapter.in.controller.activida
 import lombok.extern.log4j.Log4j2;
 import net.sfkao.activityPlanner.application.port.in.actividad.ActividadGetAllPort;
 import net.sfkao.activityPlanner.domain.Actividad;
+import net.sfkao.activityPlanner.infraestructure.adapter.out.persistence.actividad.mapper.ActividadMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +19,12 @@ public class ActivityGetAllControllerImpl implements ActivityGetAllController, A
     @Qualifier("ActividadGetAllService")
     ActividadGetAllPort actividadGetAllPort;
 
+    ActividadMapper actividadMapper = ActividadMapper.INSTANCE;
+
     @Override
     public ResponseEntity<?> getAllResponse() {
         try {
-            return ResponseEntity.ok(getAll());
+            return ResponseEntity.ok(getAll().stream().map(actividadMapper::toDTO).toList());
         } catch (Exception e) {
             log.error("No se ha podido devolver todas las actividades", e);
             return ResponseEntity.internalServerError().build();

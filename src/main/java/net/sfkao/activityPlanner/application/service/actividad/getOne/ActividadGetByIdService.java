@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public interface ActividadGetOneService {
+public interface ActividadGetByIdService {
 
     Optional<Actividad> getById(String id);
 

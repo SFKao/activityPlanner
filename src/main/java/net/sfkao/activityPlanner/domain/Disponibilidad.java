@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.time.OffsetTime;
 import java.time.format.DateTimeFormatter;
@@ -15,14 +16,14 @@ import java.time.format.DateTimeFormatter;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Disponibilidad {
+public class Disponibilidad implements Serializable {
 
     private DayOfWeek dia;
 
     private String horaInicio;
 
     private String horaFinal;
-    
+
     public OffsetTime getHoraInicioAsTime() {
         return OffsetTime.parse(horaInicio);
     }

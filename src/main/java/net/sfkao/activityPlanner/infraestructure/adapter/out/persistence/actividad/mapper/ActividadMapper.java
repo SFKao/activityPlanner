@@ -2,6 +2,8 @@ package net.sfkao.activityPlanner.infraestructure.adapter.out.persistence.activi
 
 import net.sfkao.activityPlanner.domain.Actividad;
 import net.sfkao.activityPlanner.domain.Usuario;
+import net.sfkao.activityPlanner.domain.dto.ActividadDTO;
+import net.sfkao.activityPlanner.domain.dto.UsuarioDTO;
 import net.sfkao.activityPlanner.infraestructure.adapter.out.persistence.actividad.entity.ActividadEntity;
 import net.sfkao.activityPlanner.infraestructure.adapter.out.persistence.usuario.entity.UsuarioEntity;
 import org.mapstruct.Mapper;
@@ -19,7 +21,6 @@ public interface ActividadMapper {
     @Mapping(target = "usuariosInscritos", qualifiedByName = {"toEntityWithoutActividades"})
     ActividadEntity toEntity(Actividad actividad);
 
-
     @Mapping(target = "usuariosInscritos", qualifiedByName = {"fromEntityWithoutActividades"})
     Actividad fromEntity(ActividadEntity actividadEntity);
 
@@ -30,5 +31,19 @@ public interface ActividadMapper {
     @Named("toEntityWithoutActividades")
     @Mapping(target = "actividadesInscritas", expression = "java(new ArrayList<>())")
     UsuarioEntity toEntityWithoutActividades(Usuario usuario);
+
+    @Mapping(target = "usuariosInscritos", qualifiedByName = {"toDTOWithoutActividades"})
+    ActividadDTO toDTO(Actividad actividad);
+
+    @Mapping(target = "usuariosInscritos", qualifiedByName = {"fromDTOWithoutActividades"})
+    Actividad fromDTO(ActividadDTO actividadDTO);
+
+    @Named("fromDTOWithoutActividades")
+    @Mapping(target = "actividadesInscritas", expression = "java(new ArrayList<>())")
+    Usuario fromDTOWithoutActividades(UsuarioDTO usuarioEntity);
+
+    @Named("toDTOWithoutActividades")
+    @Mapping(target = "actividadesInscritas", expression = "java(new ArrayList<>())")
+    UsuarioDTO toDTOWithoutActividades(Usuario usuario);
 
 }

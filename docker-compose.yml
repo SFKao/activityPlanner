@@ -109,35 +109,35 @@ services:
     networks:
       - elastic
 
-#  kibana:
-#    depends_on:
-#      es01:
-#        condition: service_healthy
-#    image: docker.elastic.co/kibana/kibana:${STACK_VERSION}
-#    labels:
-#      co.elastic.logs/module: kibana
-#    volumes:
-#      - ./data/certs:/usr/share/kibana/config/certs
-#      - ./data/kibanadata:/usr/share/kibana/data
-#    ports:
-#      - ${KIBANA_PORT}:5601
-#    environment:
-#      - SERVERNAME=kibana
-#      - ELASTICSEARCH_HOSTS=https://es01:9200
-#      - ELASTICSEARCH_USERNAME=kibana_system
-#      - ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}
-#      - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt
-#      - XPACK_SECURITY_ENCRYPTIONKEY=${ENCRYPTION_KEY}
-#      - XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY=${ENCRYPTION_KEY}
-#      - XPACK_REPORTING_ENCRYPTIONKEY=${ENCRYPTION_KEY}
-#    mem_limit: ${KB_MEM_LIMIT}
-#    healthcheck:
-#      test: [ "CMD-SHELL", "curl -s -I http://localhost:5601 | grep -q 'HTTP/1.1 302 Found'" ]
-#      interval: 10s
-#      timeout: 10s
-#      retries: 120
-#    networks:
-#      - elastic
+  #  kibana:
+  #    depends_on:
+  #      es01:
+  #        condition: service_healthy
+  #    image: docker.elastic.co/kibana/kibana:${STACK_VERSION}
+  #    labels:
+  #      co.elastic.logs/module: kibana
+  #    volumes:
+  #      - ./data/certs:/usr/share/kibana/config/certs
+  #      - ./data/kibanadata:/usr/share/kibana/data
+  #    ports:
+  #      - ${KIBANA_PORT}:5601
+  #    environment:
+  #      - SERVERNAME=kibana
+  #      - ELASTICSEARCH_HOSTS=https://es01:9200
+  #      - ELASTICSEARCH_USERNAME=kibana_system
+  #      - ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}
+  #      - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt
+  #      - XPACK_SECURITY_ENCRYPTIONKEY=${ENCRYPTION_KEY}
+  #      - XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY=${ENCRYPTION_KEY}
+  #      - XPACK_REPORTING_ENCRYPTIONKEY=${ENCRYPTION_KEY}
+  #    mem_limit: ${KB_MEM_LIMIT}
+  #    healthcheck:
+  #      test: [ "CMD-SHELL", "curl -s -I http://localhost:5601 | grep -q 'HTTP/1.1 302 Found'" ]
+  #      interval: 10s
+  #      timeout: 10s
+  #      retries: 120
+  #    networks:
+  #      - elastic
 
   es01:
     depends_on:
@@ -180,6 +180,17 @@ services:
       retries: 120
     networks:
       - elastic
+      - activityNetwork
+
+  redis:
+    image: redis:latest
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+    command: redis-server --save 60 1 --loglevel warning --requirepass redis
+    volumes:
+      - './data/redis:/data'
+    networks:
       - activityNetwork
 
 networks:
