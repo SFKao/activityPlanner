@@ -35,8 +35,20 @@ public class ActividadGetDisponibilidadServiceImpl implements ActividadGetDispon
         });
 
         //Obtengo las disponibilidades a calcular por el numero de jugadores
-        //Si no tiene limite de jugadores, el maximo es el numero de inscritos
-        Map<DayOfWeek, List<List<List<Disponibilidad>>>> combinacionesOfDisponibilidadesPerNumberOfPlayers = getCombinacionesOfDisponibilidadesPerNumberOfPlayers(disponibilidadesDeUsuarioPorDia, actividad.getMinJugadores(), actividad.getMaxJugadores() != -1 ? actividad.getMaxJugadores() : actividad.getUsuariosInscritos().size());
+
+        int minJugadores;
+        int maxJugadores;
+        //Si se requieren a todos los participantes
+        if (actividad.getRequierenTodos()) {
+            minJugadores = actividad.getUsuariosInscritos().size();
+            maxJugadores = actividad.getUsuariosInscritos().size();
+        } else {
+            minJugadores = actividad.getMinJugadores();
+            //Si no tiene limite de jugadores, el maximo es el numero de inscritos
+            maxJugadores = actividad.getMaxJugadores() != -1 ? actividad.getMaxJugadores() : actividad.getUsuariosInscritos().size();
+        }
+
+        Map<DayOfWeek, List<List<List<Disponibilidad>>>> combinacionesOfDisponibilidadesPerNumberOfPlayers = getCombinacionesOfDisponibilidadesPerNumberOfPlayers(disponibilidadesDeUsuarioPorDia, minJugadores, maxJugadores);
 
         Map<DayOfWeek, List<List<Disponibilidad>>> disponibilidadesPorGrupoDeUsuariosPorDia = new HashMap<>();
 
