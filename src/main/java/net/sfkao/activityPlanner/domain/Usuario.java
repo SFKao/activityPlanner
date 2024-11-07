@@ -57,6 +57,11 @@ public class Usuario implements UserDetails, Serializable {
         this.priority = priority;
     }
 
+    public Usuario(String id, @NonNull String email) {
+        this.id = id;
+        this.email = email;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();

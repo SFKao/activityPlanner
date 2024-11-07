@@ -1,6 +1,7 @@
 package net.sfkao.activityPlanner.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +17,7 @@ import java.time.format.DateTimeFormatter;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class Disponibilidad implements Serializable {
 
     private DayOfWeek dia;
