@@ -10,6 +10,7 @@ import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -24,6 +25,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Usuario implements UserDetails, Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 6570135998137614708L;
 
     @EqualsAndHashCode.Include
     private String id;

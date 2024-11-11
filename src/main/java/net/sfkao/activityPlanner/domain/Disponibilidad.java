@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.time.OffsetTime;
@@ -19,6 +20,8 @@ import java.time.format.DateTimeFormatter;
 @AllArgsConstructor
 @EqualsAndHashCode
 public class Disponibilidad implements Serializable {
+    @Serial
+    private static final long serialVersionUID = -4982349419449606467L;
 
     private DayOfWeek dia;
 

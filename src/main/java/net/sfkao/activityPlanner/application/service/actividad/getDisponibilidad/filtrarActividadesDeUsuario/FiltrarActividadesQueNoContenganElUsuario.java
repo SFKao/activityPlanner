@@ -1,0 +1,14 @@
+package net.sfkao.activityPlanner.application.service.actividad.getDisponibilidad.filtrarActividadesDeUsuario;
+
+import net.sfkao.activityPlanner.domain.PermutacionDeDisponibiliadesDeUsuarioDependiendoDelNumeroDeJugadores;
+import net.sfkao.activityPlanner.domain.Usuario;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@Component
+public interface FiltrarActividadesQueNoContenganElUsuario {
+
+    List<PermutacionDeDisponibiliadesDeUsuarioDependiendoDelNumeroDeJugadores> filtarPermutacionesQueNoContenganElUsuario(List<PermutacionDeDisponibiliadesDeUsuarioDependiendoDelNumeroDeJugadores> permutacionDeDisponibiliadesDeUsuarioDependiendoDelNumeroDeJugadores, Usuario usuario);
+
+}

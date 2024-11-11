@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.annotation.Transient;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Actividad implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = -2306577781798454436L;
 
     @EqualsAndHashCode.Include
     private String id;
@@ -41,6 +46,9 @@ public class Actividad implements Serializable {
 
     @NonNull
     List<Usuario> usuariosInscritos = new ArrayList<>();
+
+    @Transient
+    List<DisponibilidadesUsuario> disponibilidades = new ArrayList<>();
 
 
     public Actividad(@NonNull String nombre, String descripcion, int minJugadores, int maxJugadores, @NonNull Boolean requierenTodos, String imageURL) {

@@ -35,4 +35,5 @@ public class ActividadDTO {
 
     List<UsuarioDTO> usuariosInscritos = new ArrayList<>();
 
+    List<DisponibilidadesUsuarioDTO> disponibilidades = new ArrayList<>();
 }

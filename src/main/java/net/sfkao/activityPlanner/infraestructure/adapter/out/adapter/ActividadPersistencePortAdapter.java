@@ -54,7 +54,9 @@ public class ActividadPersistencePortAdapter implements ActividadPersistencePort
     @Override
     @Cacheable("actividades")
     public Optional<Actividad> findById(String idActividad) {
+
         Actividad actividadRedis = (Actividad) actividadRedisTemplate.opsForValue().get(idActividad);
+
         if (actividadRedis != null) {
             log.info("Encontrado cache en redis para actividadRedis {}", idActividad);
             return Optional.of(actividadRedis);

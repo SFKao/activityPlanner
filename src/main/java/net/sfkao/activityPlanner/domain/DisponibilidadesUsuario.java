@@ -18,7 +18,7 @@ import java.util.List;
 @EqualsAndHashCode
 public class DisponibilidadesUsuario {
 
-    private List<Disponibilidad> disponibilidadesUsuario = new ArrayList<>();
+    private List<Disponibilidad> disponibilidades = new ArrayList<>();
 
     private List<Usuario> usuarios = new ArrayList<>();
 
