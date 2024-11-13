@@ -27,7 +27,7 @@ public class CalcularHorasParaLasPermutacionesImpl implements CalcularHorasParaL
                 }
             }
             //Si no hay disponibilidades entre varios usuarios que no las guarde
-            if (!disponibilidadesDeEseDiaDeEsosUsuarios.getDisponibilidades().isEmpty()) {
+            if (!disponibilidadesDeEseDiaDeEsosUsuarios.getHoras().isEmpty()) {
                 opcionesParaRealizarActividad.add(disponibilidadesDeEseDiaDeEsosUsuarios);
             }
         });
@@ -42,8 +42,8 @@ public class CalcularHorasParaLasPermutacionesImpl implements CalcularHorasParaL
         result.getUsuarios().addAll(disponibilidads1.getUsuarios());
         result.getUsuarios().addAll(disponibilidads2.getUsuarios());
 
-        for (Disponibilidad d1 : disponibilidads1.getDisponibilidades()) {
-            for (Disponibilidad d2 : disponibilidads2.getDisponibilidades()) {
+        for (Disponibilidad d1 : disponibilidads1.getHoras()) {
+            for (Disponibilidad d2 : disponibilidads2.getHoras()) {
                 if (d1.getDia().getValue() == d2.getDia().getValue()) {
                     OffsetTime d1Inicio = d1.getHoraInicioAsTime();
                     OffsetTime d1Final = d1.getHoraFinalAsTime();
@@ -58,7 +58,7 @@ public class CalcularHorasParaLasPermutacionesImpl implements CalcularHorasParaL
                         d.setHoraFinal(d1Final.isBefore(d2Final) ? d1.getHoraFinal() : d2.getHoraFinal());
                         //El dia ha de ser igual, se chekea antes
                         d.setDia(d1.getDia());
-                        result.getDisponibilidades().add(d);
+                        result.getHoras().add(d);
                     }
                 }
             }

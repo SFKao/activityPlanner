@@ -16,7 +16,7 @@ import java.util.List;
 @ToString
 public class DisponibilidadesUsuarioDTO {
 
-    private List<DisponibilidadDTO> disponibilidades = new ArrayList<>();
+    private List<DisponibilidadDTO> horas = new ArrayList<>();
 
     private List<UsuarioDTO> usuarios = new ArrayList<>();
 

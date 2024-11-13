@@ -75,8 +75,8 @@ class ActividadGetDisponibilidadServiceImplTest {
         assert (disponibilidadesUsuarios.get(0).getUsuarios().get(0).getId().equals("q") || disponibilidadesUsuarios.get(0).getUsuarios().get(1).getId().equals("q"));
         assert (disponibilidadesUsuarios.get(0).getUsuarios().get(0).getId().equals("w") || disponibilidadesUsuarios.get(0).getUsuarios().get(1).getId().equals("w"));
 
-        assert (disponibilidadesUsuarios.get(0).getDisponibilidades().contains(new Disponibilidad(DayOfWeek.MONDAY, "17:30:00.000000+02:00", "21:00:00.000000+02:00")));
-        assert (disponibilidadesUsuarios.get(0).getDisponibilidades().get(0).getDia().equals(DayOfWeek.MONDAY));
+        assert (disponibilidadesUsuarios.get(0).getHoras().contains(new Disponibilidad(DayOfWeek.MONDAY, "17:30:00.000000+02:00", "21:00:00.000000+02:00")));
+        assert (disponibilidadesUsuarios.get(0).getHoras().get(0).getDia().equals(DayOfWeek.MONDAY));
     }
 
     Optional<Actividad> actividadInterseccionBasica() {
@@ -171,7 +171,7 @@ class ActividadGetDisponibilidadServiceImplTest {
         assert (disponibilidadesUsuarios.get(0).getUsuarios().get(0).getId().equals("q") || disponibilidadesUsuarios.get(0).getUsuarios().get(1).getId().equals("q"));
         assert (disponibilidadesUsuarios.get(0).getUsuarios().get(0).getId().equals("w") || disponibilidadesUsuarios.get(0).getUsuarios().get(1).getId().equals("w"));
 
-        assert (disponibilidadesUsuarios.get(0).getDisponibilidades().contains(new Disponibilidad(DayOfWeek.WEDNESDAY, "17:30:00.000000+02:00", "21:00:00.000000+02:00")));
+        assert (disponibilidadesUsuarios.get(0).getHoras().contains(new Disponibilidad(DayOfWeek.WEDNESDAY, "17:30:00.000000+02:00", "21:00:00.000000+02:00")));
     }
 
     Optional<Actividad> actividadMiercoles() {
@@ -223,8 +223,8 @@ class ActividadGetDisponibilidadServiceImplTest {
         assert (disponibilidadesUsuarios.get(0).getUsuarios().get(0).getId().equals("w") || disponibilidadesUsuarios.get(0).getUsuarios().get(1).getId().equals("w"));
 
 
-        assert (disponibilidadesUsuarios.get(0).getDisponibilidades().contains(new Disponibilidad(DayOfWeek.MONDAY, "17:30:00.000000+02:00", "21:00:00.000000+02:00")));
-        assert (disponibilidadesUsuarios.get(0).getDisponibilidades().contains(new Disponibilidad(DayOfWeek.WEDNESDAY, "18:00:00.000000+02:00", "21:30:00.000000+02:00")));
+        assert (disponibilidadesUsuarios.get(0).getHoras().contains(new Disponibilidad(DayOfWeek.MONDAY, "17:30:00.000000+02:00", "21:00:00.000000+02:00")));
+        assert (disponibilidadesUsuarios.get(0).getHoras().contains(new Disponibilidad(DayOfWeek.WEDNESDAY, "18:00:00.000000+02:00", "21:30:00.000000+02:00")));
 
 
     }
@@ -278,8 +278,8 @@ class ActividadGetDisponibilidadServiceImplTest {
         assert (disponibilidadesUsuarios.size() == 1);
         assert (disponibilidadesUsuarios.get(0).getUsuarios().size() == 2);
 
-        assert (disponibilidadesUsuarios.get(0).getDisponibilidades().contains(new Disponibilidad(DayOfWeek.FRIDAY, "16:00:00.000000+02:00", "21:00:00.000000+02:00")));
-        assert (disponibilidadesUsuarios.get(0).getDisponibilidades().contains(new Disponibilidad(DayOfWeek.FRIDAY, "22:00:00.000000+02:00", "23:30:00.000000+02:00")));
+        assert (disponibilidadesUsuarios.get(0).getHoras().contains(new Disponibilidad(DayOfWeek.FRIDAY, "16:00:00.000000+02:00", "21:00:00.000000+02:00")));
+        assert (disponibilidadesUsuarios.get(0).getHoras().contains(new Disponibilidad(DayOfWeek.FRIDAY, "22:00:00.000000+02:00", "23:30:00.000000+02:00")));
     }
 
     Optional<Actividad> actividadDisponibilidadesDivididas() {
