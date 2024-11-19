@@ -1,4 +1,4 @@
-package net.sfkao.activityPlanner.application.service.actividad.getDisponibilidad;
+package net.sfkao.activityPlanner.application.service.actividad.getDisponibilidadOfActividad;
 
 import net.sfkao.activityPlanner.application.port.out.actividad.ActividadPersistencePort;
 import net.sfkao.activityPlanner.application.service.actividad.getDisponibilidad.calcularHoras.CalcularHorasParaLasPermutaciones;
@@ -8,7 +8,6 @@ import net.sfkao.activityPlanner.application.service.actividad.getDisponibilidad
 import net.sfkao.activityPlanner.application.service.actividad.getDisponibilidad.getPermutaciones.GetPermutacionesOfDisponibilidadPerNumberOfPlayersImpl;
 import net.sfkao.activityPlanner.application.service.actividad.getDisponibilidad.getPermutacionesUsuario.GetPermutacionesDisponibilidadUsuariosActividad;
 import net.sfkao.activityPlanner.application.service.actividad.getDisponibilidad.getPermutacionesUsuario.GetPermutacionesDisponibilidadUsuariosActividadImpl;
-import net.sfkao.activityPlanner.application.service.actividad.getDisponibilidadOfActividad.ActividadGetDisponibilidadServiceImpl;
 import net.sfkao.activityPlanner.domain.Actividad;
 import net.sfkao.activityPlanner.domain.Disponibilidad;
 import net.sfkao.activityPlanner.domain.DisponibilidadesUsuario;
@@ -48,7 +47,6 @@ class ActividadGetDisponibilidadServiceImplTest {
 
     @Spy
     ActividadGetDisponibilidadesUsuarios actividadGetDisponibilidadesUsuarios = new ActividadGetDisponibilidadesUsuariosImpl();
-
 
     /**
      * Comprueba una interseccion

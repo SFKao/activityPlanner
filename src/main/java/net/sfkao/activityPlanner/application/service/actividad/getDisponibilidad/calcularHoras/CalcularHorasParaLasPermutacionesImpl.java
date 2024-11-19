@@ -16,10 +16,10 @@ public class CalcularHorasParaLasPermutacionesImpl implements CalcularHorasParaL
     @Override
     public List<DisponibilidadesUsuario> calcularHorasParaLasIntersecciones(List<PermutacionDeDisponibiliadesDeUsuarioDependiendoDelNumeroDeJugadores> permutacionesDeDisponibilidadesDeUsuarioDivididoEnNumeroDeJugadores) {
         List<DisponibilidadesUsuario> opcionesParaRealizarActividad = new ArrayList<>();
-        permutacionesDeDisponibilidadesDeUsuarioDivididoEnNumeroDeJugadores.forEach((combinacion) -> {
+        permutacionesDeDisponibilidadesDeUsuarioDivididoEnNumeroDeJugadores.forEach((permutacion) -> {
 
             DisponibilidadesUsuario disponibilidadesDeEseDiaDeEsosUsuarios = null;
-            for (DisponibilidadesUsuario disponibilidadUsuario : combinacion.getDisponibilidadesUsuarios()) {
+            for (DisponibilidadesUsuario disponibilidadUsuario : permutacion.getDisponibilidadesUsuarios()) {
                 if (disponibilidadesDeEseDiaDeEsosUsuarios == null) {
                     disponibilidadesDeEseDiaDeEsosUsuarios = disponibilidadUsuario;
                 } else {
